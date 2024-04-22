@@ -15,14 +15,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from main import views
 from django.contrib.auth.views import LogoutView
 from django.conf.urls.static import static
 from django.conf import settings
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'classrooms', views.ClassroomViewSet)
+router.register(r'topics', views.TopicViewSet)
+router.register(r'tasks', views.TaskViewSet)
+router.register(r'classroom-progress', views.ClassroomProgressViewSet)
+router.register(r'customs', views.CustomViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
     path('classroom/', views.classroom_view, name='classroom'),
     path('classrooms/<int:classroom_id>/topics/', views.classroom_topics, name='classroom_topics'),
     path('topics/<int:topic_id>/tasks/', views.topic_tasks, name='topic_tasks'),
@@ -42,6 +51,6 @@ urlpatterns = [
     path('task_info/', views.task_info, name='task_info'),
     path('task_info/<int:task_id>/edit/', views.edit_task, name='edit_task'),
     path('get_topics_by_classroom/<int:classroom_id>/', views.get_topics_by_classroom, name='get_topics_by_classroom'),
-    path('bookshelf/', views.bookshelf_view, name='bookshelf'),
-    path('book/', views.book_view, name='book'),
+    path('bookshelf/<int:classroom_id>/', views.bookshelf_view, name='bookshelf'),    
+    path('book/<int:topic_id>/images/', views.book_view, name='book'),
 ]   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -139,52 +139,21 @@
         <div class="books-table">
             <div class="books-row">
                 <div class="books-col-name">
-                    <h2>1-сынып</h2>
+                    <h2>{{ classroom.name }}</h2>
                 </div>
                 <div class="books-col">
-                    <a href="{% url 'book' %}"><div class="book">
-                        <div style="background-image: ;"></div>
-                        <h3 class="book-name">Name of the Book</h3>
-                    </div></a>
-                    <a href="{% url 'book' %}"><div class="book">
-                        <div style="background-image: ;"></div>
-                        <h3 class="book-name">Name of the Book</h3>
-                    </div></a>
-                    <a href="{% url 'book' %}"><div class="book">
-                        <div style="background-image: ;"></div>
-                        <h3 class="book-name">Name of the Book</h3>
-                    </div></a>
-                    <a href="{% url 'book' %}"><div class="book">
-                        <div style="background-image: ;"></div>
-                        <h3 class="book-name">Name of the Book</h3>
-                    </div></a>
-                </div>
-            </div>
-            <div class="books-row">
-                <div class="books-col-name">
-                    <h2>1-сынып</h2>
-                </div>
-                <div class="books-col">
-                    <a href="{% url 'book' %}"><div class="book">
-                        <div style="background-image: ;"></div>
-                        <h3 class="book-name">Name of the Book</h3>
-                    </div></a>
-                    <a href="{% url 'book' %}"><div class="book">
-                        <div style="background-image: ;"></div>
-                        <h3 class="book-name">Name of the Book</h3>
-                    </div></a>
-                    <a href="{% url 'book' %}"><div class="book">
-                        <div style="background-image: ;"></div>
-                        <h3 class="book-name">Name of the Book</h3>
-                    </div></a>
-                    <a href="{% url 'book' %}"><div class="book">
-                        <div style="background-image: ;"></div>
-                        <h3 class="book-name">Name of the Book</h3>
-                    </div></a>
+                    {% for topic in topics %}
+                    <a href="{% url 'book' topic.id %}">
+                        <div class="book">
+                            <div style="background-image: url('{{ topic.images.first.image.url }}');"></div>
+                            <h3 class="book-name">{{ topic.name }}</h3>
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
 
     
 

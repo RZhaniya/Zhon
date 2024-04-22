@@ -12,6 +12,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.http import JsonResponse
 from django.db.models import F
 import logging
+from .serializers import *
+from rest_framework import viewsets
+
 logger = logging.getLogger(__name__)
 
 
@@ -98,7 +101,8 @@ def home_view(request):
     return render(request, 'home.html', context)
 
 def library_view(request):
-    return render(request, 'library.html')
+    classrooms = Classroom.objects.order_by('name')
+    return render(request, 'library.html', {'classrooms': classrooms})
 
 def login_view(request):
     if request.method == 'POST':
@@ -310,8 +314,35 @@ def recalculate_all_progress():
             progress.save()
 
 
-def bookshelf_view(request):
-    return render(request, 'bookshelf.html')
+def bookshelf_view(request, classroom_id):
+    classroom = get_object_or_404(Classroom, pk=classroom_id)
+    topics = classroom.topic_set.all()
+    return render(request, 'bookshelf.html', {'classroom': classroom, 'topics': topics})
 
-def book_view(request):
-    return render(request, 'book.html')
+def book_view(request, topic_id):
+    topic = get_object_or_404(Topic, pk=topic_id)
+    images = topic.images.all()
+    return render(request, 'book.html', {'topic': topic, 'images': images})
+
+
+
+
+class ClassroomViewSet(viewsets.ModelViewSet):
+    queryset = Classroom.objects.all()
+    serializer_class = ClassroomSerializer
+
+class TopicViewSet(viewsets.ModelViewSet):
+    queryset = Topic.objects.all()
+    serializer_class = TopicSerializer
+
+class TaskViewSet(viewsets.ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
+
+class ClassroomProgressViewSet(viewsets.ModelViewSet):
+    queryset = ClassroomProgress.objects.all()
+    serializer_class = ClassroomProgressSerializer
+
+class CustomViewSet(viewsets.ModelViewSet):
+    queryset = Custom.objects.all()
+    serializer_class = CustomSerializer

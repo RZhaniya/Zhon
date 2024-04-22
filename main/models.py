@@ -10,6 +10,12 @@ def generate_filename(instance, filename):
     new_filename = f"{uuid.uuid4().hex}.{extension}"
     return os.path.join('profile_pic', new_filename)
 
+def generate_filename2(instance, filename):
+    extension = filename.split('.')[-1]
+    # Generate a unique filename using UUID
+    new_filename = f"{uuid.uuid4().hex}.{extension}"
+    return os.path.join('topic_images', new_filename)
+
 
 
 # class Task(models.Model):
@@ -33,7 +39,7 @@ class Topic(models.Model):
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE)
-    
+    images = models.ManyToManyField('Image', blank=True)
     def __str__(self):
         return self.name
     
@@ -94,5 +100,10 @@ class Custom(models.Model):
     def __str__(self):
         return self.user.first_name
     
+class Image(models.Model):
+    image = models.ImageField(upload_to=generate_filename2, null=True, blank=True)
+
+    def __str__(self):
+        return self.image.name
 
 

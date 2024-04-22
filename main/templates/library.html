@@ -124,57 +124,21 @@
     <div class="container">
 
         <div class="label"><h2 style="color: black;">Кітапхана</h2></div>
-
+       
         <div class="cards">
+            {% for classroom in classrooms %}
             <div class="card">
                 <div>
-                    <button><a href="{% url 'bookshelf' %}">►</a></button>
-                    <span>1 деңгей</span>
-                    <h2>Математика</h2>
+                    <button><a href="{% url 'bookshelf' classroom.id %}">►</a></button>
+                    <span>{{ classroom.level }} деңгей</span>
+                    <h2>{{ classroom.name }}</h2>
                 </div>
                 <img src="{% static 'img/card-back.png' %}">
             </div>
-            <div class="card">
-                <div>
-                    <button>►</button>
-                    <span>1 деңгей</span>
-                    <h2>Математика</h2>
-                </div>
-                <img src="{% static 'img/card-back.png' %}">
-            </div>
-            <div class="card">
-                <div>
-                    <button>►</button>
-                    <span>1 деңгей</span>
-                    <h2>Математика</h2>
-                </div>
-                <img src="{% static 'img/card-back.png' %}">
-            </div>
-            <div class="card">
-                <div>
-                    <button>►</button>
-                    <span>1 деңгей</span>
-                    <h2>Математика</h2>
-                </div>
-                <img src="{% static 'img/card-back.png' %}">
-            </div>
-            <div class="card">
-                <div>
-                    <button>►</button>
-                    <span>1 деңгей</span>
-                    <h2>Математика</h2>
-                </div>
-                <img src="{% static 'img/card-back.png' %}">
-            </div>
-            <div class="card">
-                <div>
-                    <button>►</button>
-                    <span>1 деңгей</span>
-                    <h2>Математика</h2>
-                </div>
-                <img src="{% static 'img/card-back.png' %}">
-            </div>
+            {% endfor %}
         </div>
+        
+        
         
 
     <script>

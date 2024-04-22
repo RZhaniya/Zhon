@@ -8,7 +8,7 @@
     <style>
         /* Global styles */
         * {
-            overflow: hidden;
+            /* overflow: hidden; */
         }
         body {
 
@@ -148,6 +148,24 @@
             margin-left: 10vh;
             margin-top: 13vh;
         }
+
+
+
+        .hidden {
+            display: none;
+        }
+
+        .cl-test-out {
+    width: calc(100% - 60px); /* Вычтите отступ слева из ширины блока */
+    display: flex;
+    justify-content: center;
+    margin-top: 10vh;
+    padding-left: 60px; /* Оставьте отступ слева */
+}
+
+
+
+
     </style>
     {% include 'navbar.html' %}
 </head>
@@ -160,9 +178,12 @@
         <!-- <div class="transparent"></div> -->
 
         <!-- <div class="big-path">
+            {% for topic in topics %}
 
 
             <div class="path">
+
+
                 <div class="cl-class-out">
                     <div class="cl-card">
                         <div class="card">
@@ -171,6 +192,8 @@
                     </div>
                     <div class="card-btn"></div>
                 </div>
+
+
                 <div class="cl-class-out" style="margin-top: 35vh;">
                     <div class="card-btn"></div>
                     <div class="cl-card">
@@ -187,34 +210,38 @@
                         <div class="test"></div>
                     </div>
                 </div>
-            </div>
+
+                
+            </div>   
+                         {% endfor %}
+
         </div> -->
+
 
         <div class="big-path">
             <div class="path">
-                {% for topic in topics %}
-                    {% if forloop.last %}
-                        <div class="cl-test-out">
-                            <div class="card-btn"></div>
-                            <div class="cl-test">
-                                <div class="test"></div>
-                            </div>
-                        </div>
-                    {% else %}
-                        {% if forloop.counter|divisibleby:2 %}
-                            <div class="cl-class-out" style="margin-top: 35vh;">
-                        {% else %}
-                            <div class="cl-class-out">
-                        {% endif %}
-                            <div class="cl-card">
-                                <div class="card">
-                                    <a href="{% url 'topic_tasks' topic.id %}"><h3>{{ topic.name }}</h3></a>
-                                </div>
-                            </div>
-                            <div class="card-btn"></div>
-                        </div>
+                <div class="cl-class-out" style="display: flex; flex-wrap: wrap;">
+                    {% for topic in topics %}
+                    {% if forloop.counter0|divisibleby:2 %}
+                    <div class="cl-card" style="width: 200px; height: 200px; margin: 10px; margin-top: 35vh; background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+                     
                     {% endif %}
-                {% endfor %}
+                    <div class="cl-card" style="width: 200px; height: 200px; margin: 10px; background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+                        
+                        <div class="card">
+                            <a href="{% url 'topic_tasks' topic.id %}">
+                                <h3>{{ topic.name }}</h3>
+                            </a>
+                        </div>
+                    </div>
+                    {% if forloop.counter0|divisibleby:2 or forloop.last %}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+                </div>
+                
+                </div>
             </div>
         </div>
         
@@ -226,5 +253,8 @@
             {% endfor %}
         </ul>  -->
     </div>
+
+    
+
 </body>
 </html>

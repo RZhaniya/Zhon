@@ -80,9 +80,9 @@
 
 
         <div id="container" class="b-pages">
-            <img class="img" src="{% static 'img/1сынып.1.1.png' %}" alt="1сынып.1.1.">
-            <img class="img" src="{% static 'img/1сынып.1.2.png' %}" alt="1сынып.1.2.">
-
+            {% for image in images %}
+            <img class="img" src="{{ image.image.url }}" alt="{{ image.title }}">
+            {% endfor %}
             <div class="tools">
                 <a href="{% url 'library' %}"><img src="{% static 'img/mini-lib.svg' %}"></a>
                 <button onclick="enableZoom()"><img src="{% static 'img/zoom-in.svg' %}"></button>
