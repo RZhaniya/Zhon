@@ -73,6 +73,152 @@
         .navbar li {
             list-style-type: none;
         }
+
+        .overlay {
+        width: 140.1vh;
+        height: 100vh;
+        margin-left: 50%; 
+        transform: translateX(-50%);
+        display: none;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0, 0.5);
+    }
+
+    #ins.overlay {
+        background-color: rgba(0,0,0, 0.0);
+    }
+
+    .overlay-content {
+        position: relative;
+        top: 25%;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .overlay a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 36px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .overlay a:hover, .overlay a:focus {
+        color: #f1f1f1;
+    }
+
+    .overlay .closebtn {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 6vh;
+        height: 6vh;
+        padding: 0;
+        right: 0;
+        font-size: 7vh;
+        background-color: #d9d9d9;
+    }
+
+    .outer-ins {
+        width: 104vh;
+        height: 66vh;
+        position: fixed;
+        display: flex;
+        margin-left: 50%; 
+        transform: translateX(-50%);
+        top: 17vh;
+    }
+
+    .inner-ins {
+        background-color: #fff;
+        width: 99vh;
+        height: 60vh;
+        margin-left: 2vh;
+        align-self: center;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border: 1.5vh solid #d9d9d9;
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .inner-ins p ,.inner-ins h2  {
+        font-family: Hombre;
+        font-size: 3vh;
+    }
+
+    .inner-ins h3 {
+        font-size: 3vh;
+        color: white;
+    }
+
+    .bubble {
+        width: 20vh;
+        height: 20vh;
+        background-image: url(/static/img/bubble.jpg);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .inst-text-box {
+        width: 65vh;
+        height: 45vh;
+        overflow-y: scroll;
+        text-align: start;
+        margin: 2vh;
+    }
+
+    .box {
+        width: 75vh;
+        height: 5vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .in-box {
+        width: 40%;
+        text-align: end;
+    }
+
+    .in-box-two {
+        display:flex;
+        width: 60%;
+        align-items: center;
+    }
+
+    .xdirection {
+        width: 50%;
+        margin-left: 10%;
+        color: #BDBDBD;
+        --thumb-height: 1.125em;
+        --track-height: 0.25em;
+        --track-color: rgba(0, 0, 0, 0.2);
+        --brightness-hover: 180%;
+        --brightness-down: 80%;
+        --clip-edges: 0.125em;
+        background: #fff0;
+        overflow: hidden;
+        border-radius: 10vh;
+
+        &:active {
+            cursor: grabbing;
+        }
+    }
+
+
     </style>
 </head>
 <body>

@@ -156,15 +156,35 @@
         }
 
         .cl-test-out {
-    width: calc(100% - 60px); /* Вычтите отступ слева из ширины блока */
-    display: flex;
-    justify-content: center;
-    margin-top: 10vh;
-    padding-left: 60px; /* Оставьте отступ слева */
-}
+        width: calc(100% - 60px); /* Вычтите отступ слева из ширины блока */
+        display: flex;
+        justify-content: center;
+        margin-top: 10vh;
+        padding-left: 60px; /* Оставьте отступ слева */
+    }
 
 
+    .label {
+        width: 45vh;
+        height: 10.5vh;
+        background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.8) 100%) border-box;
+        margin-left: 50%; 
+        transform: translateX(-50%);
+        position: relative;
+        border-bottom-left-radius: 6vh;
+        border-bottom-right-radius: 6vh;
+        border-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
+    .label h2 {
+        font-family: Hombre; 
+        font-size: 3.5vh;
+        opacity: 80%;
+        letter-spacing: 0.2vh;
+    }
 
     </style>
     {% include 'navbar.html' %}
