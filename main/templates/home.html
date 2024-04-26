@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <style>
+
         .btn a {
             position: absolute;
             font-size: 6vh;
@@ -31,8 +32,17 @@
             background-image: url("{% static 'img/home-back.jpg' %}");
             background-size: cover;
             background-position: center;
-        }
 
+            display: block;
+            width: 140vh;
+            height: 100vh;
+            margin: auto;
+            border-right: 1vh white solid;
+            border-left: 1vh white solid;
+            outline: 4vh #022B7A solid;
+            box-shadow: 0 0  1vh rgba(0, 0, 0, 0.5) inset;
+        }
+        
         .welcome h2 {
             color: white;
             font-size: 5vh;
@@ -90,12 +100,10 @@
         .sign-btn img {
             width: 3vh;
             height: 3vh;
-            /* margin: 1vh 1.2vh 1vh 1.6vh; */
         }
 
         .sign-btn h6 {
             font-size: 2.5vh;
-            /* margin-left: 1.2vh; */
         }
 
         .sign-btn:hover {
@@ -162,53 +170,49 @@
                 font-size: 20px;
             }
         }
-        .welcome {
-        /* margin: 20vh auto; */
-        width: 35vh;
-        /* height: 43vh; */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        position: relative; /* Добавьте позиционирование */
-        top: 28vh;
-        left: 10vh;
-    }
+            .welcome {
+            width: 35vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative; 
+            top: 28vh;
+            left: 10vh;
+        }
 
-    .btn {
-        width: 30%; 
-        height: 10%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-        top: 33vh;
-        position: relative;
-        z-index: 1; /* Добавьте z-index для перекрытия элементов */
-    }
+        .btn {
+            width: 30%; 
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            top: 33vh;
+            position: relative;
+            z-index: 1; 
+        }
 
-    .welcome-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Центрировать содержимое по горизонтали */
-    margin-top: 30px; /* Примерный отступ сверху */
-    background-color: white;
-    justify-content: center;
-    flex-direction: row;
-    border-radius: 1.5vh;
-    box-shadow: 0.4vh 0.6vh 0.05vh rgb(0, 0, 0, 0.4);
-    /* padding: 1px 20px; */
-    }
+        .welcome-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+            background-color: white;
+            justify-content: center;
+            flex-direction: row;
+            border-radius: 1.5vh;
+            box-shadow: 0.4vh 0.6vh 0.05vh rgb(0, 0, 0, 0.4);
+        }
 
-    /* Стили для дочерних элементов .welcome-text */
-    .mini-lib,
-    .mini-prof {
-        margin-top: 10px; /* Примерный отступ между элементами */
-        padding: 0px 10px;
-    }   
-    a{
-        padding-top: 3px;
-    }
+        .mini-lib,
+        .mini-prof {
+            margin-top: 10px; 
+            padding: 0px 10px;
+        }   
+        a{
+            padding-top: 3px;
+        }
         
     </style>   
     {% include 'navbar.html' %}  
