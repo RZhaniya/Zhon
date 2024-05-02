@@ -5,18 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ classroom.name }} Topics</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <style>
+        body {
+            background-image: url(/../static/img/back-home0.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+
         .container {
             background: linear-gradient(0deg, rgba(152,179,148,1) 0%, rgba(212,251,207,1) 100%);
             z-index: 1;        
         }
 
         .label {
-            position: fixed;
-            margin-left: 70vh;
-            margin-top: 8vh;
-            z-index: 1;
-            background: linear-gradient(90deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%) border-box;
+            height: 10vh;
+            padding-top: 7vh;
+            margin-bottom: 1vh;
         }
 
         .big-path {
@@ -68,8 +73,8 @@
         }
 
         .cl-card {
-            height: 21vh;
-            min-width: 21vh;
+            height: 20vh;
+            min-width: 20vh;
             background-color: white;
             clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%);
             display: flex;
@@ -133,42 +138,17 @@
             margin-top: 13vh;
         }
 
-
-
         .hidden {
             display: none;
         }
 
         .cl-test-out {
-        width: calc(100% - 60px); /* Вычтите отступ слева из ширины блока */
-        display: flex;
-        justify-content: center;
-        margin-top: 10vh;
-        padding-left: 60px; /* Оставьте отступ слева */
-    }
-
-
-    .label {
-        width: 45vh;
-        height: 10.5vh;
-        background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.8) 100%) border-box;
-        margin-left: 50%; 
-        transform: translateX(-50%);
-        position: relative;
-        border-bottom-left-radius: 6vh;
-        border-bottom-right-radius: 6vh;
-        border-top: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .label h2 {
-        font-family: Hombre; 
-        font-size: 3.5vh;
-        opacity: 80%;
-        letter-spacing: 0.2vh;
-    }
+            width: calc(100% - 60px); /* Вычтите отступ слева из ширины блока */
+            display: flex;
+            justify-content: center;
+            margin-top: 10vh;
+            padding-left: 60px; /* Оставьте отступ слева */
+        }
 
     </style>
     {% include 'navbar.html' %}
@@ -227,10 +207,10 @@
                 <div class="cl-class-out" style="display: flex; flex-wrap: wrap;">
                     {% for topic in topics %}
                     {% if forloop.counter0|divisibleby:2 %}
-                    <div class="cl-card" style="width: 200px; height: 200px; margin: 10px; margin-top: 35vh; background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+                    <div class="cl-card" style="width: 21vh; height: 21vh; margin: 1.5vh; margin-top: 35vh; background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
                      
                     {% endif %}
-                    <div class="cl-card" style="width: 200px; height: 200px; margin: 10px; background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+                    <div class="cl-card" style="width: 21vh; height: 21vh; margin: 1.5vh; background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
                         
                         <div class="card">
                             <a href="{% url 'topic_tasks' topic.id %}">

@@ -5,7 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <style>
+        body {
+            background-image: url(../../static/img/back-home0.jpg);
+            background-position: center;
+            background-size: cover;
+        }
 
         .btn a {
             position: absolute;
@@ -190,7 +196,6 @@
             margin: auto;
             top: 33vh;
             position: relative;
-            z-index: 1; 
         }
 
         .welcome-text {
@@ -212,6 +217,7 @@
         }   
         a{
             padding-top: 3px;
+            color: black;
         }
         
     </style>   
