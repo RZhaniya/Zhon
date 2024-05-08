@@ -32,7 +32,7 @@ button, a {
 	border-right: 1vh white solid;
 	border-left: 1vh white solid;
 	outline: 4vh #022B7A solid;
-	box-shadow: 0 0  1vh rgba(0, 0, 0, 0.5) inset;
+	box-shadow: 0 0 3vh 0 rgba(0, 0, 0, 0.4) inset;
 }
 
 .overlay {
@@ -123,7 +123,7 @@ button, a {
 	align-items: center;
 }
 
-.inner-ins p ,.inner-ins h2 , {
+.inner-ins p ,.inner-ins h2 {
 	font-family: Hombre;
 	font-size: 3vh;
 }
@@ -136,7 +136,7 @@ button, a {
 .bubble {
 	width: 20vh;
 	height: 20vh;
-    background-image: url('img/bubble.jpg');
+    background-image: url('/static/img/bubble.jpg');
     background-size: cover;
     background-position: center;
     display: flex;

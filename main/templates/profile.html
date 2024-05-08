@@ -1,8 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     <title>User Profile</title>
     {% include 'navbar.html' %}
     <style>
@@ -12,12 +14,6 @@
             margin: 0 auto;
             text-align: center;
         }
-        .profile-pic {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
         .profile-info {
             font-size: 18px;
             margin-bottom: 20px;
@@ -25,33 +21,675 @@
         .progress-info {
             font-size: 16px;
         }
+        .container {
+            background-color: #ead09a;
+        }
+        h1 {
+            font-family: Hombre;
+        }
+        h2 {
+            font-family: Hombre;
+        }
+        h3 {
+            font-family: Hombre;
+        }
+        .tabcontent {
+            display: none;
+            width: 140vh;
+            height: 90vh;
+            background-color: #FFF1CD;
+            box-shadow: 0 0.5vh 0.05vh rgb(0, 0, 0, 0.3), inset 0 0 3vh 0 rgba(0, 0, 0, 0.4);;
+        }
+        .tabcontent::-webkit-scrollbar {
+            scrollbar-height: 60vh;
+            margin-right: 1vh;
+            width: 2vh;
+        }
+        .tabcontent::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+        .tabcontent::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 5vh;
+            border: 0.2vh rgba(0, 0, 0, 0.3) solid;
+        }
+        .tabcontent::-webkit-scrollbar-button {
+            background-color: transparent;
+        }
+        .tabcontent::-webkit-scrollbar-corner {
+            background-color: #f1f1f1;
+        }
+        .tabcontent::-webkit-scrollbar-track-piece:start {
+            background: transparent;
+            margin-top: 8vh;
+        }
+        .main-1 {
+            width: 40vh;
+            height: 80vh;
+            margin-top: 10vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .user-inf {
+                background-color: #0659A6;
+                width: 35vh;
+                text-align: center;
+                font-size: 3vh;
+                margin-top: 1.5vh;
+                padding: 0.5vh 0vh;
+                color: white;
+                box-shadow: 0.4vh 0.5vh 0.05vh rgb(0, 0, 0, 0.3);
+            }
+
+
+
+            .user-activity {
+                background-color: white;
+                width: 35vh;
+                height: 30vh;
+                margin-top: 2vh;
+                box-shadow: 0.4vh 0.5vh 0.05vh rgb(0, 0, 0, 0.3);
+
+                h3 {
+                    color: white;
+                    background-color: #0659A6;
+                    padding: 0.5vh 2vh;
+                }
+
+                ul {
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
+
+                    li {
+                        padding: 1.7vh 1vh;
+                        color: #0659A6;
+                        display: flex;
+                        justify-content:space-between;
+                        align-items: end;
+                    }
+
+                    span {
+                        font-size: 2vh;
+                        color: dimgrey;
+                    }
+                }
+            }
+
+        }
+        .main-2 {
+            width: 100vh;
+            height: 80vh;
+            margin-top: 10vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            .user-progress {
+                width: 90vh;
+                height: 60vh;
+                background-color: white;
+                margin: auto;
+                box-shadow: 0.4vh 0.5vh 0.05vh rgb(0, 0, 0, 0.3);
+
+                .prog-card-in {
+                    background-color: #0659A6;
+                    width: 90vh;
+                    display: flex;
+                    flex-direction: row;
+                }
+
+                .prog-nums {
+                    height: 8vh;
+                    background-color: transparent;
+
+                    .cl-num {
+                        color: white;
+                    }
+                }
+
+                h2 {
+                    width: 15vh;
+                    padding: 2vh 1vh;
+                    color: white;
+                    font-size: 3vh;
+                    margin-left: 1vh;
+                }
+            }
+
+            .main-2-out {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                height: 86%;
+
+                .main-2-in {
+                    display: flex;
+                    flex-direction: column;
+                    width: 20%;
+                    height: 50%;
+
+                    button {
+                        background-color: transparent;
+                        font-size: 5vh;
+                        border: none;
+                        cursor: pointer;
+                        color: #0659A6;
+
+                        :hover {
+                            color: #408FCC;
+                        }
+                    }
+
+                    .main-2-cl-name {
+                        width: 90%;
+                        margin: auto;
+                        overflow: hidden;
+                        position: relative;
+                        text-align: center;
+
+                        h3 {
+                            white-space: nowrap;
+                            transition: transform 3.5s ease;
+                            left: 100%;
+                        }
+                    }
+                    .main-2-cl-name:hover h3 {transform: translateX(-100%);}
+                }
+
+                .card-in {
+                    width: 80%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    flex-wrap: wrap;
+
+                    .ind {
+                        width: 5.5vh;
+                        text-align: center;
+
+                        .ind-prog {
+                            background-color: #DDDDDD;
+                            width: 5.5vh;
+                            height: 18vh;
+                            margin-top: 1.5vh;
+                            display: flex;
+                            align-items: end;
+
+                            div {
+                                width: 100%;
+                                background-color: #F52338;
+                            }
+                        }
+
+                        p {
+                            margin-top: 0.8vh;
+                        }
+                    }
+                }
+            }
+        }
+        .pfp {
+            width: 30vh;
+            height: 30vh;
+            position:relative;
+
+            div {
+                clip-path: polygon(51% 0, 87% 13%, 100% 45%, 93% 86%, 54% 100%, 13% 90%, 0 53%, 15% 13%);
+                background-color: #FFCE41;
+                width: 30vh;
+                height: 30vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+            }
+
+            .profile-pic {
+                width: 27vh;
+                height: 27vh;
+                border-radius: 28vh;
+                position: absolute;
+                background-color: white;
+                margin: 0;
+            }
+
+            button {
+                width: 4vh;
+                height: 4vh;
+                background-color: #0659A6;
+                position: absolute;
+                right: 1vh;
+                bottom: 1vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                box-shadow: 0.4vh 0.5vh 0.05vh rgb(0, 0, 0, 0.3);
+                cursor: pointer;
+
+                img {
+                    height: 80%;
+                }
+            }
+            button:hover {
+                background-color: #58baff;
+            }
+        }
+        .prog-nums {
+            width: 90%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-left: 10%;
+
+            .pr-name {
+                width: 20vh;
+                height: 4vh;
+                position: relative;
+                overflow: hidden;
+
+                h2 {
+                    position: absolute;
+                    white-space: nowrap;
+                    transition: transform 3.5s ease;
+                    text-decoration: none;
+                }
+            }
+
+            .pr-name:hover h2 {transform: translateX(-100%);}
+
+            p {
+                color: gold;
+                font-size: 2.5vh;
+                img {
+                    display: inline;
+                    vertical-align: middle;
+                    width: 4vh;
+                    height: 4vh;
+                }
+            }
+
+            .rating {
+                background-color: #F52338;
+                width: 36vh;
+                height: 4vh;
+                display: flex;
+
+                div {
+                    width: 9vh;
+                    height: 100%;
+                    text-align: center;
+                    color: gold;
+                    font-size: 3vh;
+                }
+            }
+            .cl-num {
+                color: gray;
+            }
+        }
+        #progress {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: scroll;
+
+            .prog {
+                padding-top: 20vh;
+                width: 130vh;
+            }
+
+            .prog-card {
+                width: 100%;
+                min-height: 8vh;
+                margin-top: 5vh;
+
+                .prog-card-in {
+                    background-color: white;
+                    width: 100%;
+                    height: 8vh;
+                    position: relative;
+
+                    button {
+                        width: 8vh;
+                        height: 8vh;
+                        border: none;
+                        background-color: transparent;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        margin-left: 2vh;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+
+                .card-in {
+                    background-color: white;
+                    width: 90%;
+                    height: 20vh;
+                    margin-left: 10%;
+                    display: none;
+                    justify-content: space-evenly;
+
+                    .ind {
+                        width: 5.5vh;
+                        height: 100%;
+                        text-align: center;
+
+                        .ind-prog {
+                            background-color: lightgrey;
+                            width: 5.5vh;
+                            height: 14vh;
+                            margin-top: 1.5vh;
+                            display: flex;
+                            align-items: end;
+
+                            div {
+                                width: 100%;
+                                background-color: #F52338;
+                            }
+                        }
+
+                        p {
+                            margin-top: 0.8vh;
+                        }
+                    }
+                }
+            }
+
+        }
+        .btns {
+            width: 140vh;
+            display: flex;
+            justify-content: space-around;
+        }
+        .tablink {
+            width: 42vh;
+            height: 8vh;
+            border: none;
+            font-size: 3vh;
+            border: 1vh solid;
+            border-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+
+            .mini-pfp {
+                margin-right: 1vh;
+                width: 5.5vh;
+                height: 5.5vh;
+
+                div {
+                    clip-path: polygon(51% 0, 87% 13%, 100% 45%, 93% 86%, 54% 100%, 13% 90%, 0 53%, 15% 13%);
+                    background-color: #FFCE41;
+                    width: 5.5vh;
+                    height: 5.5vh;
+                }
+                .profile-pic {
+                    width: 5vh;
+                    height: 5vh;
+                    border-radius: 5vh;
+                }
+            }
+
+            span {
+                font-size: 6.5vh;
+                color: #ffce41;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="profile-container">
-        <h1>User Profile</h1>
-        <div class="profile-info">
-            <img src="{{ profile_info.profile_pic.url }}" alt="Profile Picture" class="profile-pic">
-            <p>Name: {{ profile_info.get_name }}</p>
-            <p>User ID: {{ profile_info.get_id }}</p>
-            <!-- You can add more user information here -->
+    <div class="container">
+        <div class="tabcontent" id="main">
+            <div class="main-1">
+                <div class="pfp">
+                    <div style="background-color: rgb(0,0,0,0.3);"></div>
+                    <div style="margin: -30.5vh 0 0 -0.4vh;">
+                        <img class="profile-pic" src="{% if profile_pic %}
+                            {{ profile_pic }}
+                        {% else %}
+                            {% static 'img/pfp.png' %}
+                        {% endif %}">
+                    </div>
+                    <button><img src="{% static 'img/edit.svg' %}"></button>
+                </div>
+                <h2 class="user-inf">{{ profile_info.get_name }}</h2>
+                <h2 class="user-inf">ID: {{ profile_info.get_id }}</h2>
+                <div class="user-activity">
+                    <h3>Фактілер</h3>
+                    <ul>
+                        <li>Current streak: <span>3 days</span></li>
+                        <li>Best streak: <span>47 days</span></li>
+                        <li>Pages read: <span>0 days</span></li>
+                        <li>Total time: <span>777 hours 88 minutes</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main-2">
+                <div class="user-progress">
+                    <div class="prog-card-in">
+                        <h2>Прогресс</h2>
+                        <div class="prog-nums">
+                            <p>777 <img src="/static/img/star.svg"></p>
+                            <p>888 <img src="/static/img/cup.svg"></p>
+                            <p>444,000  XP</p>
+                            <p class="cl-num">222/555 Сабақтар</p>
+                        </div>
+                    </div>
+
+                    <div class="main-2-out">
+                        <div class="main-2-in">
+                            <button id="up-main-2" class="prev nav-btn" onclick="changeClassroom('previous')">
+                                <span>&#9650</span>
+                            </button>
+                            <div class="main-2-cl-name"><h3 class="cl-name-h2">Class name</h3></div>
+                            </button>
+                            <button id="up-main-2" class="next nav-btn" onclick="changeClassroom('next')">
+                                <span>&#x25BC;</span>
+                            </button>
+                        </div>
+                        <div class="card-in">
+                            <div class="ind" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);">
+                                <div class="ind-prog"><div style="height: 80%;"></div></div>
+                                <p>1</p>
+                            </div>
+                            <div class="ind" style="clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);">
+                                <div class="ind-prog"><div style="height: 80%;"></div></div>
+                                <p>2</p>
+                            </div>
+                            <div class="ind" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);">
+                                <div class="ind-prog"><div style="height: 80%;"></div></div>
+                                <p>3</p>
+                            </div>
+                            <div class="ind" style="clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);">
+                                <div class="ind-prog"><div style="height: 80%;"></div></div>
+                                <p>4</p>
+                            </div>
+                            <div class="ind" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);">
+                                <div class="ind-prog"><div style="height: 80%;"></div></div>
+                                <p>5</p>
+                            </div>
+                            <div class="ind" style="clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);">
+                                <div class="ind-prog"><div style="height: 80%;"></div></div>
+                                <p>6</p>
+                            </div>
+                            <div class="ind" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);">
+                                <div class="ind-prog"><div style="height: 80%;"></div></div>
+                                <p>7</p>
+                            </div>
+                            <div class="ind" style="clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);">
+                                <div class="ind-prog"><div style="height: 80%;"></div></div>
+                                <p>8</p>
+                            </div>
+                            <div class="ind" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);">
+                                <div class="ind-prog"><div style="height: 80%;"></div></div>
+                                <p>9</p>
+                            </div>
+                    </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        <!-- Progress-related information -->
-        <div class="progress-info">
-            {% for classroom_progress in classroom_progress %}
-            <h3>{{ classroom_progress.classroom.name }}</h3>
-            <p>Progress Percentage: {{ classroom_progress.progress_percentage }}%</p>
-            <p>Completed Tasks: {{ classroom_progress.completed_tasks_count }}</p>
-        {% endfor %}
-        
-            <!-- Display tasks count data -->
-            <h2>Tasks Completed</h2>
-            <ul>
-                {% for item in tasks_count_by_date %}
-                    <li>{{ item.completion_date|date:'j F Y' }}: Solved {{ item.count }} task{% if item.count != 1 %}s{% endif %}</li>
-                {% endfor %}
-            </ul>
+
+        <div class="tabcontent" id="progress">
+            <div class="prog">
+                <div class="prog-card">
+                    <div class="prog-card-in">
+                        <button onclick=""><img src="/static/img/prof-arr.svg"></button>
+                        <div class="prog-nums">
+                            <div class="pr-name"><h2>Grade name</h2></div>
+                            <p>777 <img src="/static/img/star.svg"></p>
+                            <p>888 <img src="/static/img/cup.svg"></p>
+                            <p>444,000  XP</p>
+                            <div class="rating">
+                                <div style="background-color: darkred">&#9733;&#9733;&#9733;</div>
+                                <div style="background-color: red">&#9733;&#9733;</div>
+                                <div style="background-color: indianred">&#9733;</div>
+                                <div style="background-color: darkgrey; color: dimgray">&#9733;</div>
+                            </div>
+                            <p class="cl-num">222/555 Сабақтар</p>
+                        </div>
+                    </div>
+                    <div class="card-in">
+                        <div class="ind" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);">
+                            <div class="ind-prog"><div style="height: 80%;"></div></div>
+                            <p>1</p>
+                        </div>
+                        <div class="ind" style="clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);">
+                            <div class="ind-prog"><div style="height: 80%;"></div></div>
+                            <p>1</p>
+                        </div>
+                        <div class="ind" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);">
+                            <div class="ind-prog"><div style="height: 80%;"></div></div>
+                            <p>1</p>
+                        </div>
+                        <div class="ind" style="clip-path: polygon(10% 0, 90% 0, 100% 100%, 0 100%);">
+                            <div class="ind-prog"><div style="height: 80%;"></div></div>
+                            <p>1</p>
+                        </div>
+                        <div class="ind" style="clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);">
+                            <div class="ind-prog"><div style="height: 80%;"></div></div>
+                            <p>1</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+
+        <div class="tabcontent" id="activity"></div>
+
+
+        <div style="width: 140vh; height: 5vh; background: #FFF1CD; background: linear-gradient(0deg, rgba(255,241,205,1) 24%, rgba(255,241,205,0) 100%); position: fixed; bottom: 10vh"></div>
+
+        <div class="btns">
+            <button class="tablink" onclick="openProf('main', this)">
+                <div class="pfp mini-pfp">
+                    <div>
+                        <img class="profile-pic" src="{% if profile_pic %}
+                            {{ profile_pic }}
+                        {% else %}
+                            {% static 'img/pfp.png' %}
+                        {% endif %}">
+                    </div>
+                </div>
+                <h4>Profile</h4>
+            </button>
+            <button class="tablink" onclick="openProf('progress', this)">
+                <span>&#9733;</span>
+                <h4>Progress</h4>
+            </button>
+            <button class="tablink" onclick="openProf('activity', this)">Activity</button>
         </div>
     </div>
+{#    <div class="profile-container">#}
+{#        <h1>User Profile</h1>#}
+{#        <div class="profile-info">#}
+{#            <img src="{{ profile_info.profile_pic.url }}" alt="Profile Picture" class="profile-pic">#}
+{#            <p>Name: {{ profile_info.get_name }}</p>#}
+{#            <p>User ID: {{ profile_info.get_id }}</p>#}
+{#            <!-- You can add more user information here -->#}
+{#        </div>#}
+{#        <!-- Progress-related information -->#}
+{#        <div class="progress-info">#}
+{#            {% for classroom_progress in classroom_progress %}#}
+{#            <h3>{{ classroom_progress.classroom.name }}</h3>#}
+{#            <p>Progress Percentage: {{ classroom_progress.progress_percentage }}%</p>#}
+{#            <p>Completed Tasks: {{ classroom_progress.completed_tasks_count }}</p>#}
+{#        {% endfor %}#}
+{#        #}
+{#            <!-- Display tasks count data -->#}
+{#            <h2>Tasks Completed</h2>#}
+{#            <ul>#}
+{#                {% for item in tasks_count_by_date %}#}
+{#                    <li>{{ item.completion_date|date:'j F Y' }}: Solved {{ item.count }} task{% if item.count != 1 %}s{% endif %}</li>#}
+{#                {% endfor %}#}
+{#            </ul>#}
+{#        </div>#}
+{#    </div>#}
+<script>
+        function openProf(profName, elmnt) {
+            // Hide all tabcontent elements
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none"; // Hide all
+                tabcontent[i].classList.remove("active"); // Remove 'active' class
+            }
+
+            // Display the specific tabcontent and mark as active
+            var activeTab = document.getElementById(profName);
+            activeTab.style.display = "flex"; // Show active tab
+            activeTab.classList.add("active"); // Add 'active' class
+
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "#0659A6";
+                tablinks[i].style.borderColor = '#408FCC';
+                tablinks[i].style.boxShadow = '0.4vh 0.5vh 0.05vh rgb(0, 0, 0, 0.3), inset 0 0.5vh 0.05vh rgb(0, 0, 0, 0.3)';
+            }
+
+            elmnt.style.backgroundColor = '#16ACF3';
+            elmnt.style.borderColor = '#fff6e5';
+            elmnt.style.boxShadow = '0.4vh 0.5vh 0.05vh rgb(0, 0, 0, 0.3)';
+        }
+
+        document.getElementsByClassName("tablink")[0].click();
+
+        document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('.prog-card-in button');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', function() {
+      const progCard = this.closest('.prog-card');
+
+      if (progCard) {
+        const cardIn = progCard.querySelector('.card-in');
+
+        if (cardIn.style.display == 'flex') {
+            cardIn.style.display = 'none';
+        } else {
+            cardIn.style.display = 'flex';
+        }
+      }
+    });
+  });
+});
+
+    </script>
 </body>
 </html>

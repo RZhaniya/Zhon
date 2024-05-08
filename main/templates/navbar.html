@@ -254,9 +254,9 @@
             {% if user.is_staff %}
                 <a href="{% url 'admin_panel' %}">Admin Panel</a>
             {% else %}
-                <a href="{% url 'profile' %}">Profile</a>
+                <a href="{% url 'profile' %}">Профиль</a>
             {% endif %}
-            <div class="user-info">Привет, {{ user.username }}!</div>
+            <div class="user-info">Сәлем, {{ user.username }}!</div>
             <form class="logout-form" action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
                 <button type="submit">Шығу</button>
